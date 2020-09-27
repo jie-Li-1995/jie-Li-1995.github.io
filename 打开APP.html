@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <button>打开微信</button>
+</body>
+<script>
+  //设置3秒没打开app即跳转下载页
+  var COUNT = 3;
+  //定时器
+  var TIMER;
+
+  $('button').click(function () {
+    openWx()
+  });
+
+  function openWx() {
+    locatUrl = "weixin://";
+    if (/ipad|iphone|mac/i.test(navigator.userAgent)) {
+      var ifr = document.createElement("iframe");
+      ifr.src = locatUrl;
+      ifr.style.display = "none";
+      document.body.appendChild(ifr);
+    } else {
+      window.location.href = locatUrl;
+    }
+
+  }
+</script>
+
+</html>
