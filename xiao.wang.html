@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/wang.css">
+</head>
+<body>
+  <div>
+    <h1>王艺润是小王还是小王吧?</h1>
+  </div>
+  <div>
+    <button type="button" class="btn btn-primary">小王</button>
+    <button type="button" class="btn btn-danger">小王吧</button>
+  </div>
+  <div class="alert alert-success">
+    <strong>成功!</strong> 一看你就是个睿智的人
+  </div>
+  <div class="alert alert-danger">
+    <strong>成功!</strong> 一猜就是小王点的
+  </div>
+</body>
+<script>
+  function init() {
+    $('.alert').hide()
+  }
+  init()
+  $('.btn-primary').click(function () {
+    init()
+    $('.alert-success').show()
+  })
+  $('.btn-danger').click(function () {
+    init()
+    $('.alert-danger').show()
+  })
+</script>
+</html>
