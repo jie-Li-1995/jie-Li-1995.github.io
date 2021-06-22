@@ -60,14 +60,16 @@
   })
 
   $('.form-control').keyup(function (event) {
+    console.log(event);
     switch (event.keyCode) {
       case 13:
         jisuan()
     }
   })
   $(document).keyup(function (event) {
+    console.log(event);
     switch (event.keyCode) {
-      case 9:
+      case 32:
         $('.form-control').focus()
     }
   })
