@@ -1,0 +1,51 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  background: url(../img/default.png);
+  background-size: cover;
+
+  * {
+    box-shadow: none !important;
+  }
+
+  #app {
+    padding: 20px 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    background: #Fff;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    >div:not(:last-of-type) {
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      display: flex;
+
+      input {
+        width: 80%;
+        padding: 0 30px;
+        box-sizing: border-box;
+      }
+
+      button {
+        flex: 1;
+      }
+    }
+
+    .jieguo {
+      border: 1px solid #ccc;
+      min-height: 40px;
+      line-height: 40px;
+      background: #ccc;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
