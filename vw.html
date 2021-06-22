@@ -58,5 +58,18 @@
   $('.input-group button').click(function () {
     jisuan()
   })
+
+  $('.form-control').keyup(function (event) {
+    switch (event.keyCode) {
+      case 13:
+        jisuan()
+    }
+  })
+  $(document).keyup(function (event) {
+    switch (event.keyCode) {
+      case 9:
+        $('.form-control').focus()
+    }
+  })
 </script>
 </html>
