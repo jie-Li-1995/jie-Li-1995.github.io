@@ -1,0 +1,49 @@
+// 结构: @name: { 属性: 值 ;};
+// 使用：@name();
+@primary: #ff6700;
+@warnning: red;
+@dangerous: yellow;
+@info: #ccc;
+
+.textOverflow(@num: 2, @lineHeight: 1.2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*多行超出省略*/
+  -webkit-line-clamp: @num;
+  -webkit-box-orient: vertical;
+  line-height: @lineHeight;
+}
+
+.name {
+  font-size: 16px;
+  color: #ff6700;
+  .textOverflow(3, 1.5)
+}
+
+.commonbox() {
+  color: @primary;
+  &:extend(.name);
+}
+
+//理解方式：直接把 & 替换成 #header
+#header {
+  &:after {
+    content: "Less is more!";
+  }
+
+  .title {
+    .commonbox();
+    font-weight: bold;
+  }
+
+  &_content {
+    margin: 20px;
+  }
+}
+
+@media screen {
+  @media (max-width: 768px) {
+    width: 100px;
+  }
+}

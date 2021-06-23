@@ -1,0 +1,150 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+html {
+  font-family: Calibri, "Microsoft YaHei", Helvetica, STHeiTi, sans-serif;
+  color: #333;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body,
+html {
+  /* 是否阻止文字复制 */
+  /* -webkit-user-select: none;
+    user-select: none */
+}
+address,
+applet,
+article,
+aside,
+audio,
+blockquote,
+body,
+canvas,
+caption,
+dd,
+details,
+div,
+dl,
+dt,
+embed,
+figcaption,
+figure,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+iframe,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+progress,
+ruby,
+section,
+summary,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+a {
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  background-color: transparent;
+}
+li {
+  list-style: none;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+b,
+strong {
+  font-weight: 700;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+  -webkit-touch-callout: none;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+}
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+h5 {
+  font-size: 0.83em;
+  margin: 1.67em 0;
+}
+h6 {
+  font-size: 0.67em;
+  margin: 2.33em 0;
+}
+button,
+.pointer {
+  cursor: pointer;
+}
