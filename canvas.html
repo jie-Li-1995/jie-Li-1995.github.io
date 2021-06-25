@@ -5,10 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
 </head>
 
+<style>
+  .root {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    background: url(./img/share.jpg);
+    background-size: 100% 100%;
+  }
+
+  .root canvas {
+    width: 200px;
+    height: 200px;
+  }
+</style>
+
 <body>
-  <canvas width="600" height="400" id="test"></canvas>
+  <div class="root">
+    <canvas width="200" height="200" id="test"></canvas>
+  </div>
 </body>
 <script src="./js/baseCanvas.js"></script>
 
