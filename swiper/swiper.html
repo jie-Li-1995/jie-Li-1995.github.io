@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <style>
+    .swiper {
+      border: 1px solid #ccc;
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .swiper-slide img {
+    width: 100%;
+    height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="swiper swiper-container-3d">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="./image/1.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+         <img src="./image/2.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+         <img src="./image/3.jpg" alt="">
+      </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</body>
+<script>
+  // $(function () {
+
+  // })
+
+  var mySwiper = new Swiper('.swiper', {
+        effect: 'coverflow',
+        slidesPerView: 2,
+        centeredSlides: true,
+        // loopedSlides: 3,
+        loopAdditionalSlides: 1,
+        loop: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 50,
+            depth: 60,
+            modifier: 5,
+            slideShadows: false
+        },
+        pagination: {
+            el: '.hero-pagination',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+  })
+</script>
+
+</html>
