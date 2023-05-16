@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        --b: 5px;
+        --f: 1;
+      }
+      img {
+        transition: all 0.2s;
+        background: radial-gradient(
+          circle closest-side,
+          #ecd078 calc(99% - var(--b)),
+          #c02942 calc(100% - var(--b)) 99%,
+          #0000
+        );
+      }
+      img:hover {
+        transform: scale(1.35);
+        background: radial-gradient() 50% / calc(100% / var(--f)) 100% no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="/img/cover.webp" alt="" />
+  </body>
+  <script>
+    function debounce(func, wait) {
+      let timer = null
+      return function () {
+        if (timer) {
+          timer = clearTimeout(timer)
+        }
+        timer = setTimeout(() => {
+          func.apply(this, arguments)
+        }, wait)
+      }
+    }
+    function throttle(func, wait) {
+      let timer = null
+      return function () {
+        if (timer) {
+          console.log('上一个定时器尚未完成')
+        } else {
+          func.apply(this, arguments)
+          timer = setTimeout(() => {
+            timer = clearTimeout(timer)
+          }, wait)
+        }
+      }
+    }
+
+    //
+    let timer = setTimeout(() => {
+      timer = clearTimeout(timer)
+      console.log(timer, '结束')
+    }, 2000)
+    console.log(timer, '开始')
+  </script>
+</html>
