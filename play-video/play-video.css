@@ -1,0 +1,57 @@
+#play_video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9;
+}
+#play_video .play_video_close {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkIwM0I0Mjc5MUNGMTFFNUJEQTBBOUMyMjQ2QUZBNkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkIwM0I0Mjg5MUNGMTFFNUJEQTBBOUMyMjQ2QUZBNkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCQjAzQjQyNTkxQ0YxMUU1QkRBMEE5QzIyNDZBRkE2QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCQjAzQjQyNjkxQ0YxMUU1QkRBMEE5QzIyNDZBRkE2QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pq0kzzAAAADWSURBVHjapNVtDsIgDAZgWj3IOKzOQ4gX25/dBKnSZE4KpSXpj/HxvNtC0pBzDqWWUvdSUJ+tRedv1QsM7/k7no4AOpeqQ95Ck4/8OywBR5jHSgtY6uUIaMH0jLzBGiDC/M+tAV34jM8EDOEWzgGpE6CCJbwXgFq4h0sBmxYe4VKACtbgVJfGG291PnhwGLw5WHFQ/nOYxaXrdhXmQYuP7jFqA7QwKG7R377pAzP7rbDqnAceBtDi6oB7AZ9OFA89NDl6KJ56aOSFWL/A2/2xOuSFtwADAG/A0YEPK0sNAAAAAElFTkSuQmCC');
+  background-size: 100% 100%;
+}
+#play_video .play_video_content {
+  max-width: 1000px;
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+#play_video .play_video_content h2 {
+  padding-right: 60px;
+  font-size: 30px;
+  margin: 10px 0;
+  color: #fff;
+}
+#play_video .play_video_content video {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  #play_video .play_video_close {
+    width: 23px;
+    height: 23px;
+  }
+  #play_video .play_video_content {
+    width: 90%;
+  }
+  #play_video .play_video_content h2 {
+    font-size: 25px;
+  }
+}
+.line_over {
+  white-space: nowrap;
+  /* 禁止文本换行 */
+  overflow: hidden;
+  /* 超出部分隐藏 */
+  text-overflow: ellipsis;
+  /* 超出时显示省略号 */
+}
