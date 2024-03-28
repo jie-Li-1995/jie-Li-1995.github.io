@@ -5,7 +5,12 @@ body {
 }
 body > div {
   border: 1px solid #000;
-  place-items: center center;
+  overflow: hidden;
+  /* 隐藏超出部分 */
+  word-wrap: break-word;
+  /* 在单词内换行 */
+  white-space: normal;
+  /* 正常换行 */
 }
 body > div:first-of-type {
   grid-column: span 2;
