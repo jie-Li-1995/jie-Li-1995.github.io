@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+}
+body {
+  padding: 20px;
+}
+.tickets {
+  display: flex;
+  width: 600px;
+  height: 240px;
+  box-sizing: border-box;
+}
+.tickets .tickets-content {
+  --background: skyblue;
+  position: relative;
+  width: 75%;
+  background: radial-gradient(circle at top right, transparent 15px, var(--background) 0) right top / 100% 50% no-repeat, radial-gradient(circle at bottom right, transparent 15px, var(--background) 0) right bottom / 100% 50% no-repeat;
+  filter: drop-shadow(-3px 0 3px rgba(0, 0, 0, 0.3));
+}
+.tickets .tickets-content::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 10px;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  /* 
+        语法：
+        background:bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment initial|inherit; 
+        radial-gradient(shape size at position, start-color, ..., last-color);
+      */
+  background-image: radial-gradient(circle at left center, transparent 10px, skyblue 0);
+  background-position: left top;
+  background-size: 10px 30px;
+}
+.tickets .tickets-tool {
+  --background: orchid;
+  position: relative;
+  flex: 1;
+  background: radial-gradient(circle at top left, transparent 15px, var(--background) 0) left top / 100% 50% no-repeat, radial-gradient(circle at bottom left, transparent 15px, var(--background) 0) left bottom / 100% 50% no-repeat;
+  filter: drop-shadow(3px 0 3px rgba(0, 0, 0, 0.3));
+}
+.tickets .tickets-tool::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  top: 0;
+  right: -8px;
+  background: radial-gradient(circle at right center, transparent 6px, orchid 0) left center / 8px 20px;
+}
