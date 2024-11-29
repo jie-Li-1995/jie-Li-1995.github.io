@@ -1,16 +1,57 @@
-body {
+.wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 10px;
-  > div {
-    border: 1px solid #000;
- 
-    overflow: hidden; /* 隐藏超出部分 */
-    word-wrap: break-word; /* 在单词内换行 */
-    white-space: normal; /* 正常换行 */
-    &:first-of-type {
+
+  // grid-auto-flow: row; 默认值，按行排列
+  // grid-auto-flow: column; 按列排列
+  //grid-auto-flow: row dense; // 紧密排列
+  // grid-template-columns: repeat(auto-fit, 200px); 自动填充
+  // grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 列宽至少 200px，如果还有空余则一起等分
+  >div {
+
+    &:nth-of-type(2) {
+      grid-row: span 2;
       grid-column: span 2;
+    }
+
+    &:nth-of-type(3) {
+      grid-row: span 3;
+    }
+
+    &:nth-of-type(4) {
       grid-row: span 2;
     }
   }
+}
+
+.one {
+  background: #19CAAD;
+}
+
+.two {
+  background: #8CC7B5;
+}
+
+.three {
+  background: #D1BA74;
+}
+
+.four {
+  background: #BEE7E9;
+}
+
+.five {
+  background: #E6CEAC;
+}
+
+.six {
+  background: #ECAD9E;
+}
+
+.item {
+  text-align: center;
+  font-size: 200%;
+  color: #fff;
 }

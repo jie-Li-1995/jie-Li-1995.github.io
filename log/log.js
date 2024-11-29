@@ -58,3 +58,16 @@ log.error('info')
 log.warning('info')
 log.success('info')
 log.table([{ name: '张三', age: 18, gender: '男', address: '北京', phone: '12345678901' }])
+
+const Enum = values => {
+  const reverseMap = Object.fromEntries(Object.entries(values).map(([key, value]) => [value, key]))
+  return Object.freeze({ ...values, reverse: reverseMap })
+}
+
+const net = Enum({
+  Red: 'red',
+  Green: 'green'
+})
+
+console.log(net.Red) // 输出 'red'
+console.log(net.reverse.red) // 输出 'Red'

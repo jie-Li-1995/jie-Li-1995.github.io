@@ -1,18 +1,39 @@
-body {
+.wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 10px;
 }
-body > div {
-  border: 1px solid #000;
-  overflow: hidden;
-  /* 隐藏超出部分 */
-  word-wrap: break-word;
-  /* 在单词内换行 */
-  white-space: normal;
-  /* 正常换行 */
-}
-body > div:first-of-type {
-  grid-column: span 2;
+.wrapper > div:nth-of-type(2) {
   grid-row: span 2;
+  grid-column: span 2;
+}
+.wrapper > div:nth-of-type(3) {
+  grid-row: span 3;
+}
+.wrapper > div:nth-of-type(4) {
+  grid-row: span 2;
+}
+.one {
+  background: #19CAAD;
+}
+.two {
+  background: #8CC7B5;
+}
+.three {
+  background: #D1BA74;
+}
+.four {
+  background: #BEE7E9;
+}
+.five {
+  background: #E6CEAC;
+}
+.six {
+  background: #ECAD9E;
+}
+.item {
+  text-align: center;
+  font-size: 200%;
+  color: #fff;
 }
