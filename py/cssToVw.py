@@ -6,7 +6,7 @@ import re
 BASE_WIDTH = 1920  # 基准宽度
 EXCLUDE_PROPERTIES = ['font-size']  # 排除的 CSS 属性
 
-def px_to_vw(css_content):
+def px_to_vw(css_content, base_width):
     """将 px 转换为 vw"""
     def convert_px(match):
         full_property = match.group(0)
@@ -20,7 +20,7 @@ def px_to_vw(css_content):
         # 转换 px 为 vw
         try:
             px_value = float(value_with_unit.replace('px', ''))
-            vw_value = (px_value / BASE_WIDTH) * 100
+            vw_value = (px_value / base_width) * 100
 
             # 格式化为保留两位小数的 vw，且如果是0就不保留小数
           # 如果是整数，则直接输出整数，若是小数则保留两位小数
@@ -37,18 +37,18 @@ def px_to_vw(css_content):
     return re.sub(pattern, convert_px, css_content)
 
 
-def process_scss_file(file_path):
+def process_scss_file(file_path, base_width):
     """处理单个 SCSS 文件"""
     with open(file_path, 'r', encoding='utf-8') as file:
         scss_content = file.read()
 
     # 转换 px 为 vw
-    return px_to_vw(scss_content)
+    return px_to_vw(scss_content, base_width)
 
 
-def generate_vw_scss(output_path, main_scss_file):
+def generate_vw_scss(output_path, main_scss_file, base_width=BASE_WIDTH):
     """生成转换后的 SCSS 文件"""
-    converted_scss = process_scss_file(main_scss_file)
+    converted_scss = process_scss_file(main_scss_file, base_width)
 
     with open(output_path, 'w', encoding='utf-8') as output_file:
         output_file.write(converted_scss)
@@ -56,7 +56,10 @@ def generate_vw_scss(output_path, main_scss_file):
 
 
 # 示例用法
-main_scss = 'e:/work/jie-Li-1995.github.io/py/main.scss'  # 主 SCSS 文件路径
-output_scss = 'e:/work/jie-Li-1995.github.io/py/main_vw.scss'  # 输出的转换后的 SCSS 文件路径
+main_pc_scss = 'e:/work/jie-Li-1995.github.io/py/pc.scss'  # 主 SCSS 文件路径
+main_mb_scss = 'e:/work/jie-Li-1995.github.io/py/mb.scss'  # 主 SCSS 文件路径
+output_mb_scss = 'e:/work/jie-Li-1995.github.io/py/out/mb_vw.scss'  # 输出的转换后的 SCSS 文件路径
+output_pc_scss = 'e:/work/jie-Li-1995.github.io/py/out/pc_vw.scss'  # 输出的转换后的 SCSS 文件路径
 
-generate_vw_scss(output_scss, main_scss)
+generate_vw_scss(output_pc_scss, main_pc_scss, 1920)
+generate_vw_scss(output_mb_scss, main_mb_scss, 750)
