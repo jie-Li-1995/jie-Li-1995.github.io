@@ -3,7 +3,7 @@
 import re
 
 # 全局配置
-EXCLUDE_PROPERTIES = ['font-size']  # 排除的 CSS 属性
+EXCLUDE_PROPERTIES = ['font-size', 'border-width', 'border-radius','border','border-botton']  # 排除的 CSS 属性
 
 def px_to_vw(css_content, base_width):
     """将 px 转换为 vw"""
@@ -31,7 +31,7 @@ def px_to_vw(css_content, base_width):
             return full_property  # 如果转换失败，返回原值
 
     # 正则表达式匹配 CSS 样式属性值为 px 的部分
-    pattern = r'(\w[\w-]*):\s*(\d+(\.\d+)?)px;'
+    pattern = r'(\w[\w-]*):\s*(-?\d+(\.\d+)?)px;'  # 允许匹配负号
     return re.sub(pattern, convert_px, css_content)
 
 

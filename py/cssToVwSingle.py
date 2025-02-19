@@ -18,7 +18,7 @@ def px_to_vw(css_content, base_width):
 
         # 转换 px 为 vw
         try:
-            px_value = float(value_with_unit.replace('px', ''))
+            px_value = value_with_unit.replace('px', '') - 0
             vw_value = (px_value / base_width) * 100
 
             # 如果是整数，则直接输出整数，若是小数则保留两位小数
