@@ -1,0 +1,25 @@
+/* e:/work/jie-Li-1995.github.io/py/pc.scss 转换结果，基准宽度: 1920 */
+body {
+  margin: 1.04vw;
+  width: 100vw;
+  padding: 100%;
+  h1 {
+    padding: 0.52vw;
+    padding-top: 10;
+    margin-bottom: 0.52vw;
+  }
+}
+
+/* e:/work/jie-Li-1995.github.io/py/mb.scss 转换结果，基准宽度: 750 */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 2.67vw;
+    width: 256vw;
+    padding: 100%;
+    h1 {
+      padding: 1.33vw;
+      padding-top: 10;
+      margin-bottom: 1.33vw;
+    }
+  }
+}
