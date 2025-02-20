@@ -1,16 +1,63 @@
-/* e:/work/jie-Li-1995.github.io/py/pc.scss 转换结果，基准宽度: 1920 */
-body {
-  margin-top: -0.52vw;
-  padding: 0 10px 15px;
+.site-header {
+  height: 4.69vw;
+  border-bottom: 1px solid #dde2e5;
+  img {
+    width: 4.9vw;
+  }
+  p {
+    span {
+      cursor: pointer;
+      color: #808ca3;
+      font-size: 18px;
+      margin-right: 0.94vw;
+    }
+    button {
+      padding: 0.52vw 0.78vw;
+      background: #808ca3;
+      border-radius: 4px;
+      font-size: 18px;
+      color: #fff;
+      border: none;
+      line-height: 1;
+    }
+  }
+  > div {
+    > i {
+      color: #f9c50e;
+      margin-right: 1.25vw;
+    }
+    ::v-deep(.el-avatar) {
+      width: 2.40vw;
+      height: 2.40vw;
+    }
+  }
 }
 
-/* e:/work/jie-Li-1995.github.io/py/mb.scss 转换结果，基准宽度: 750 */
-@media screen and (max-width: 768px) {
-body {
-  margin-top: -1.33vw;
-  padding: 0 10px 15px;
+@media (max-width: 768px) {
+  .site-header {
+    height: 10.6667vw;
+    img {
+      width: 17.7vw;
+    }
+    p {
+      span {
+        font-size: 15px;
+        margin-right: 6vw;
+      }
+      button {
+        padding: 1.33vw 2vw;
+        font-size: 15px;
+      }
+    }
+    > div {
+      > i {
+        margin-right: 3.20vw;
+      }
+      ::v-deep(.el-avatar) {
+        width: 7.47vw;
+        height: 7.47vw;
+      }
+    }
+  }
 }
-
-}
-
 

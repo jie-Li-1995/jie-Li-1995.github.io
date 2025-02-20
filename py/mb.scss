@@ -1,4 +1,27 @@
-body {
-  margin-top: -10px;
-  padding: 0 10px 15px;
+@media (max-width: 768px) {
+  .site-header {
+    height: 10.6667vw;
+    img {
+      width: 17.7vw;
+    }
+    p {
+      span {
+        font-size: 15px;
+        margin-right: 6vw;
+      }
+      button {
+        padding: 1.33vw 2vw;
+        font-size: 15px;
+      }
+    }
+    > div {
+      > i {
+        margin-right: 24px;
+      }
+      ::v-deep(.el-avatar) {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  }
 }
