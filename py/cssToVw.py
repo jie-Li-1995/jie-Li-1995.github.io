@@ -69,7 +69,7 @@ def generate_combined_scss(output_path, scss_files):
     with open(output_path, 'w', encoding='utf-8') as output_file:
         output_file.write(combined_scss)
     
-    print(f"文件合并并转换成功。输出文件路径：{output_path}")
+    print(f"conversion and merge successful:\n{output_path}")
 
 
 # 示例用法
