@@ -1,26 +1,24 @@
-@media (max-width: 768px) {
-  .site-header {
-    height: 10.6667vw;
-    img {
-      width: 17.7vw;
-    }
-    p {
+.home-banner-mb {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  --swiper-pagination-bottom: 30px;
+  --swiper-pagination-color: #222222;
+  --swiper-pagination-bullet-size: 14px;
+}
+.home-product {
+  padding-bottom: 6.67vw;
+  .topic-item {
+    .topic-info {
+      height: 6.67vw;
+      padding: 0 2vw;
       span {
-        font-size: 15px;
-        margin-right: 6vw;
+        color: #fff;
+        font-size: 12px;
       }
-      button {
-        padding: 1.33vw 2vw;
-        font-size: 15px;
-      }
-    }
-    > div {
-      > i {
-        margin-right: 24px;
-      }
-      ::v-deep(.el-avatar) {
-        width: 56px;
-        height: 56px;
+      i {
+        color: #fff;
+        font-size: 12px;
       }
     }
   }

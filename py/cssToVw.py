@@ -32,7 +32,7 @@ def px_to_vw(css_content, base_width):
             replace_px,
             value_str
         )
-        return f'{property_name}: {new_value_str};'
+        return f'{property_name}:{new_value_str};'
 
     # 正则匹配 CSS 属性（支持多值，如 padding: 15px 14px;）
     pattern = r'(\w[\w-]*)\s*:\s*([^;]+);'
@@ -62,7 +62,13 @@ def generate_combined_scss(output_path, scss_files):
         converted_scss = process_scss_file(input_file, base_width)
         
         # 将转换后的内容拼接到最终的 SCSS 字符串
-        combined_scss += converted_scss + "\n\n"
+        if base_width == 750:
+            mb_scss += "@media screen and (max-width: 768px) {\n"
+            mb_scss += converted_scss + "\n\n"
+            mb_scss += "}\n"
+            combined_scss += mb_scss
+        else:
+            combined_scss += converted_scss + "\n\n"
             
 
     # 将合并后的 SCSS 内容写入输出文件
