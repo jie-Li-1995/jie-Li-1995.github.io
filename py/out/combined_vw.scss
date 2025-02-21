@@ -1,39 +1,11 @@
 .site-header {
-  height: 4.69vw;
-  border-bottom: 1px solid #dde2e5;
-  img {
-    width: 4.9vw;
-  }
-  p {
-    span {
-      cursor: pointer;
-      color: #808ca3;
-      font-size: 18px;
-      margin-right: 0.94vw;
-    }
-    button {
-      padding: 0.52vw 0.78vw;
-      background: #808ca3;
-      border-radius: 4px;
-      font-size: 18px;
-      color: #fff;
-      border: none;
-      line-height: 1;
-    }
-  }
-  > div {
-    > i {
-      color: #f9c50e;
-      margin-right: 1.25vw;
-    }
-    ::v-deep(.el-avatar) {
-      width: 2.40vw;
-      height: 2.40vw;
-    }
-  }
+  padding: 0 1.04vw;
+  font-size: 14px;
+  margin-top: 2.08vw;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 102.40vw) {
   .site-header {
     height: 10.6667vw;
     img {

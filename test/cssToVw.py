@@ -3,39 +3,35 @@
 import re
 
 # 全局配置
-EXCLUDE_PROPERTIES = ['font-size', 'border-width','border','border-bottom']  # 排除的 CSS 属性
+EXCLUDE_PROPERTIES = ['font-size', 'border-width', 'border-radius','border','border-botton']  # 排除的 CSS 属性
 
 def px_to_vw(css_content, base_width):
-    """将 CSS 内容中的 px 单位转换为 vw"""
+    """将 px 转换为 vw"""
     def convert_px(match):
-        property_name = match.group(1).strip()
-        value_str = match.group(2).strip()
+        full_property = match.group(0)
+        property_name = match.group(1)
+        value_with_unit = match.group(2)
 
-        # 如果属性在排除列表中，直接返回原值
+        # 如果当前属性在排除列表中，直接返回原值
         if property_name in EXCLUDE_PROPERTIES:
-            return f'{property_name}: {value_str};'
+            return full_property
 
-        # 处理值中的每个 px 单位
-        def replace_px(px_match):
-            px_value = px_match.group(1)
-            try:
-                px_num = float(px_value)
-                vw_value = (px_num / base_width) * 100
-                # 格式化输出（整数去小数点，否则保留两位）
-                return f'{vw_value:.2f}vw'.rstrip('0').rstrip('.') if vw_value % 1 else f'{int(vw_value)}vw'
-            except ValueError:
-                return px_match.group(0)  # 转换失败则保留原值
+        # 转换 px 为 vw
+        try:
+            px_value = float(value_with_unit.replace('px', ''))
+            vw_value = (px_value / base_width) * 100
 
-        # 匹配所有 px 值（包括负值和小数）
-        new_value_str = re.sub(
-            r'(-?\d+\.?\d*)px',  # 匹配 15px、-15px、14.5px 等
-            replace_px,
-            value_str
-        )
-        return f'{property_name}: {new_value_str};'
+            # 格式化为保留两位小数的 vw，且如果是0就不保留小数
+            if vw_value == int(vw_value):  # 判断是否是整数
+                return f'{property_name}: {int(vw_value)}vw;'  # 输出整数
+            else:
+                return f'{property_name}: {vw_value:.2f}vw;'  # 输出保留两位小数
 
-    # 正则匹配 CSS 属性（支持多值，如 padding: 15px 14px;）
-    pattern = r'(\w[\w-]*)\s*:\s*([^;]+);'
+        except ValueError:
+            return full_property  # 如果转换失败，返回原值
+
+    # 正则表达式匹配 CSS 样式属性值为 px 的部分
+    pattern = r'(\w[\w-]*):\s*(-?\d+(\.\d+)?)px;'  # 允许匹配负号
     return re.sub(pattern, convert_px, css_content)
 
 
