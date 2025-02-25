@@ -1,25 +1,10 @@
-.home-banner-mb {
-  position: relative;
-  padding-top: 40px;
-  padding-bottom: 60px;
-  --swiper-pagination-bottom: 30px;
-  --swiper-pagination-color: #222222;
-  --swiper-pagination-bullet-size: 14px;
-}
-.home-product {
-  padding-bottom: 6.67vw;
-  .topic-item {
-    .topic-info {
-      height: 6.67vw;
-      padding: 0 2vw;
-      span {
-        color: #fff;
-        font-size: 12px;
-      }
-      i {
-        color: #fff;
-        font-size: 12px;
-      }
-    }
+.good-swiper {
+  padding: 60px 0;
+  h5 {
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
+  .pc {
+    display: none !important;
   }
 }

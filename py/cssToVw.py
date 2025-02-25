@@ -35,7 +35,8 @@ def px_to_vw(css_content, base_width):
         return f'{property_name}:{new_value_str};'
 
     # 正则匹配 CSS 属性（支持多值，如 padding: 15px 14px;）
-    pattern = r'(\w[\w-]*)\s*:\s*([^;]+);'
+    pattern = r'([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*([^;{}]+);'
+
     return re.sub(pattern, convert_px, css_content)
 
 
