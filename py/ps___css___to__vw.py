@@ -3,7 +3,7 @@
 import re
 
 # 全局配置
-EXCLUDE_PROPERTIES = ['font-size', 'border-width', 'border-radius', 'border','border-bottom', 'border-top']  # 排除的 CSS 属性
+EXCLUDE_PROPERTIES = ['border-radius', 'border','border-bottom', 'border-top']  # 排除的 CSS 属性
 
 def px_to_vw(css_content, base_width):
     """将 CSS 内容中的 px 单位转换为 vw"""
