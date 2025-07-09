@@ -1,43 +1,47 @@
-import os
+# coding=utf-8
+# 作者：刘
 import re
 
 # 全局配置
-BASE_WIDTH = 1920  # 基准宽度
-EXCLUDE_PROPERTIES = ['font-size']  # 排除的 CSS 属性
+EXCLUDE_PROPERTIES = ['border']  # 排除的 CSS 属性
 
 def px_to_vw(css_content, base_width):
-    """将 px 转换为 vw"""
+    """将 CSS 内容中的 px 单位转换为 vw"""
     def convert_px(match):
-        full_property = match.group(0)
-        property_name = match.group(1)
-        value_with_unit = match.group(2)
+        property_name = match.group(1).strip()
+        value_str = match.group(2).strip()
 
-        # 如果当前属性在排除列表中，直接返回原值
+        # 如果属性在排除列表中，直接返回原值
         if property_name in EXCLUDE_PROPERTIES:
-            return full_property
+            return f'{property_name}: {value_str};'
 
-        # 转换 px 为 vw
-        try:
-            px_value = value_with_unit.replace('px', '') - 0
-            vw_value = (px_value / base_width) * 100
+        # 处理值中的每个 px 单位
+        def replace_px(px_match):
+            px_value = px_match.group(1)
+            try:
+                px_num = float(px_value)
+                vw_value = (px_num / base_width) * 100
+                # 格式化输出（整数去小数点，否则保留两位）
+                return f'{vw_value:.2f}vw'.rstrip('0').rstrip('.') if vw_value % 1 else f'{int(vw_value)}vw'
+            except ValueError:
+                return px_match.group(0)  # 转换失败则保留原值
 
-            # 如果是整数，则直接输出整数，若是小数则保留两位小数
-            if vw_value == int(vw_value):  # 判断是否是整数
-                return f'{property_name}: {int(vw_value)}vw;'  # 输出整数
-            else:
-                return f'{property_name}: {vw_value:.2f}vw;'  # 输出保留两位小数
+        # 匹配所有 px 值（包括负值和小数）
+        new_value_str = re.sub(
+            r'(-?\d+\.?\d*)px',  # 匹配 15px、-15px、14.5px 等
+            replace_px,
+            value_str
+        )
+        return f'{property_name}:{new_value_str};'
 
-        except ValueError:
-            return full_property  # 如果转换失败，返回原值
+    # 正则匹配 CSS 属性（支持多值，如 padding: 15px 14px;）
+    pattern = r'([a-zA-Z][a-zA-Z0-9_-]*)\s*:\s*([^;{}]+);'
 
-    # 正则表达式匹配 CSS 样式属性值为 px 的部分
-    pattern = r'(\w[\w-]*):\s*(\d+(\.\d+)?)px;'
     return re.sub(pattern, convert_px, css_content)
 
 
 def process_scss_file(file_path, base_width):
     """处理单个 SCSS 文件"""
-    # 以 UTF-8 编码读取文件，确保处理中文不乱码
     with open(file_path, 'r', encoding='utf-8') as file:
         scss_content = file.read()
 
@@ -45,21 +49,45 @@ def process_scss_file(file_path, base_width):
     return px_to_vw(scss_content, base_width)
 
 
-def generate_vw_scss(output_path, main_scss_file, base_width):
-    """生成转换后的 SCSS 文件"""
+def generate_combined_scss(output_path, scss_files):
+    """将多个 SCSS 文件的转换结果合并为一个 SCSS 文件"""
+    combined_scss = ""
+    mb_scss = ""
 
-    converted_scss = process_scss_file(main_scss_file, base_width)
+    for scss_file in scss_files:
+        mb_scss =""
+        base_width = scss_file['base_width']
+        input_file = scss_file['input']
+        
+        # 获取转换后的 SCSS 内容
+        converted_scss = process_scss_file(input_file, base_width)
+        
+        # 将转换后的内容拼接到最终的 SCSS 字符串
+        if base_width == 750:
+            combined_scss += 'mobile' + "\n\n"
+            combined_scss += converted_scss + "\n\n"
+        else:
+            combined_scss += converted_scss + "\n\n"
+            
 
-    # 以 UTF-8 编码写入文件，确保输出中文时不乱码
+    # 将合并后的 SCSS 内容写入输出文件
     with open(output_path, 'w', encoding='utf-8') as output_file:
-        output_file.write(converted_scss)
-    print(f"已生成转换后的 SCSS 文件: {output_path}")
+        output_file.write(combined_scss)
+    
+    print(f"conversion and merge successful:\n{output_path}")
 
 
 # 示例用法
-main_scss = 'e:/work/jie-Li-1995.github.io/py/main.scss'  # 或者提供绝对路径，如 'e:/work/jie-Li-1995.github.io/css/main.scss'
-output_scss = 'e:/work/jie-Li-1995.github.io/py/out/main.scss'  # 输出路径
+def process_and_combine_files():
+    """处理多个 SCSS 文件并将它们合并到一个 SCSS 文件"""
+    scss_files = [
+        {'input': 'e:/work/jie-Li-1995.github.io/py/pc.scss', 'base_width': 1920},
+        {'input': 'e:/work/jie-Li-1995.github.io/py/mb.scss', 'base_width': 750}
+    ]
 
-# 检查文件是否存在
+    output_combined_scss = 'e:/work/jie-Li-1995.github.io/py/out/combined_vw.scss'  # 输出合并后的 SCSS 文件路径
 
-generate_vw_scss(output_scss, main_scss, 1920)
+    generate_combined_scss(output_combined_scss, scss_files)
+
+# 运行合并处理函数
+process_and_combine_files()
