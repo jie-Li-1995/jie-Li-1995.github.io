@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 获取账号
+  const username = window.prompt("请输入账号：", "");
+
+  // 获取密码（明文不安全！）
+  const password = window.prompt("请输入密码：", "");
+
+  if (username && password) {
+    console.log("账号:", username);
+    console.log("密码:", password); // 密码是明文！
+  } else {
+    console.log("用户取消了输入");
+  }
+</script>
+
+</html>
